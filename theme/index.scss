@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+  font-weight: 400;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.page-enter-active,
+.page-live-active {
+  transition: opacity .3s;
+}
+
+.page-enter,
+.page-leave {
+  opacity: 0;
+}
