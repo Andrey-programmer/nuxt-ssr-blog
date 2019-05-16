@@ -1,5 +1,5 @@
 export const state = () => ({
-    token: null
+    token: true
 })
 
 export const getters = {
@@ -36,5 +36,12 @@ export const actions = {
     },
     logout({commit}) {
         commit('clearToken')
+    },
+    async createUser({commit}, formData) {
+        try {
+            console.log('CreateUser', formData)
+        } catch (error) {
+            
+        }
     }
 }
