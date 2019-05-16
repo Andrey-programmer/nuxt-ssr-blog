@@ -16,7 +16,7 @@
 <script>
     export default {
         props: {
-            comment: String
+            comment: Number
         }
     }
 </script>

@@ -61,7 +61,8 @@ import AppCommentForm from '~/components/main/CommentForm.vue'
 export default {
     data() {
         return {
-            canAddComment: true
+            canAddComment: true,
+            comment: '' 
         }
     },
     components: {
