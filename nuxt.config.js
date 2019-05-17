@@ -17,7 +17,7 @@ module.exports = {
   },
 
 
-  loading: { color: '#fff' },
+  loading: { color: '#409EFF' },
 
 
   css: [
