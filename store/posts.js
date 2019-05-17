@@ -39,12 +39,28 @@ export const actions = {
     },
     async updatePost({commit}, {id, text}) {
     },
-    async createPost({}, {title, text}) {
-        return await new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve()
-            }, 200);
-        })
+    async createPost({commit}, {title, text, image}) {
+
+        try {
+            /* Формируем файл для отправки */
+            const fData = new FormData()
+            fData.append('title', title)
+            fData.append('text', text)
+            fData.append('image', image, image.name)
+
+            // console.log(fData)
+
+            return await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve((fData) => {console.log(fData)
+                    fData})
+                }, 200);
+            })
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
+        
     }
 
 }

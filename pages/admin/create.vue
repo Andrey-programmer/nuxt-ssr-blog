@@ -48,6 +48,19 @@
                 <vue-markdown>{{controls.text}}</vue-markdown>
             </div>
         </el-dialog>
+
+        <el-upload
+            class="mb" 
+            drag
+            ref="upload"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :on-change="handleImageChange"
+            :auto-upload="false"
+        >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">Перетащите картинку <em>или нажмите</em></div>
+            <div class="el-upload__tip" slot="tip">Файлы с расширением jpg/png/webp</div>
+        </el-upload>
     </el-form>
 </template> 
 
@@ -62,6 +75,7 @@
         },
         data() {
             return {
+                image: null,
                 previewDialog: false,
                 loading: false,
                 controls: {
@@ -83,7 +97,7 @@
                     ]
                 }
             }
-        },
+        }, 
         watch: {
             controls(value) {
                 console.log(value)
@@ -91,19 +105,23 @@
         },
         methods: {
             onSubmit() {
+                console.log('onSubmit')
                 this.$refs.form.validate(async valid => {
-                    if (valid) {
+                    if (valid && this.image) {
                         this.loading = true
 
                         const formData = { 
                             text: this.controls.text,
-                            title: this.controls.title
+                            title: this.controls.title,
+                            image: this.image
                         }
 
                         try {
-                            await this.$store.dispatch('posts/createPost', FormData)
+                            await this.$store.dispatch('posts/createPost', formData)
                             this.controls.text = ''
                             this.controls.title = ''
+                            this.$refs.upload.clearFiles()
+                            this.image = null
                             this.$message.success('Пост добавлен')
                         } catch (error) {
                         
@@ -111,8 +129,14 @@
                             this.loading = false
                         }
                         
+                    } else {
+                        this.$message.warning('Форма не валидна')
                     }
-                })
+                }) 
+            },
+            handleImageChange(file, fileList) {
+                this.image = file.raw
+                // console.log(this.image)
             }
         }
     }
