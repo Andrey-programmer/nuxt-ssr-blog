@@ -23,7 +23,7 @@ export const actions = {
             }, 200);
         })
     },
-    async renovePost({commit}, id) {
+    async removePost({commit}, id) {
         try {
             
         } catch (error) {
@@ -37,7 +37,14 @@ export const actions = {
             }, 200);
         })
     },
-    async updatePost({commit}, formData) {
+    async updatePost({commit}, {id, text}) {
+    },
+    async createPost({}, {title, text}) {
+        return await new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, 200);
+        })
     }
 
 }

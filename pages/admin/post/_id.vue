@@ -14,7 +14,6 @@
             ref="form"
             @submit.native.prevent="onSubmit"
         >
-            <!-- <h2>Войти в панель администратора</h2> -->
             <el-form-item label="Текст в формате .md или .html" prop="text">
                 <el-input 
                     type="textarea"
@@ -67,8 +66,7 @@
             return {
                 loading: false,
                 controls: {
-                login: '',
-                password: ''
+                text: '',
                 },
                 rules: {
                     text: [{
