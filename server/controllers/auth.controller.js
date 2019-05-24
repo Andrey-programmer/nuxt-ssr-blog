@@ -44,11 +44,11 @@ module.exports.createUser = async (req, res) => {
         
 
         const user = new User({
-            login: req.login,
+            login: req.body.login,
             password: bcrypt.hashSync(req.body.password, codeScript) //Передаем значение и  указываем метод шифрования
         })
 
         await user.save()
-        req.status(201).json({user})
+        res.status(201).json({user})
     }
 } 
