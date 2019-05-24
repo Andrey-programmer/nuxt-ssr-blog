@@ -1,8 +1,7 @@
-const {model} = require('mongoose')
+// const {model} = require('mongoose')
 const keys = require('../keys')
 const {Strategy, ExtractJwt} = require('passport-jwt')
-require('../models/user.model')
-const User = model('users')
+const User = require('../models/user.model')
 
 //Autherization: Bearer ... .... .. . . .
 const options = {
