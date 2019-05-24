@@ -61,7 +61,7 @@
                         message: 'Пароль должен быть не менее 6 символов',
                         trigger: 'blur'
                     }]
-                }
+                }  
             }
         },  
         mounted() {
@@ -70,8 +70,10 @@
             switch (message) {
                 case 'login': this.$message.info('Для начала работы в систему')
                 break
-                case 'logout': this.$message.info('Вы вышли из системы')
+                case 'logout': this.$message.success('Вы вышли из системы')
                 break 
+                case 'session': this.$message.warning('Время сессии истекло, пожалуйста авторизуйтесь')
+                break
             }
 
         },
