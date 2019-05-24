@@ -14,7 +14,7 @@
         watch: {
             error(value) {
                 // console.log('Watch: ', value)
-                this.$message.error(value)
+                this.$message.error(value.response.data.message)
             }
         }
     }

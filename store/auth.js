@@ -1,5 +1,5 @@
 export const state = () => ({
-    token: true
+    token: null
 })
 
 export const getters = {
@@ -26,7 +26,7 @@ export const actions = {
                 }, 2000);
             })   */
 
-            const {token} = this.$axios.$post('/api/auth/admin/login',formData)
+            const {token} = await this.$axios.$post('/api/auth/admin/login',formData)
             console.log('token ', token)
             dispatch('setToken', token)
         } catch (error) {
