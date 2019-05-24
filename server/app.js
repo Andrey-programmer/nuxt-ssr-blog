@@ -1,6 +1,6 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const passport = require('passport')
 const passportStrategy = require('./middleware/passport-strategy')
 
