@@ -76,6 +76,7 @@ export const actions = {
 }
 
 function isJWTValid(token) {
+    console.log('Token = ', token)
     if(!token) {
         return false
     }
@@ -83,6 +84,5 @@ function isJWTValid(token) {
     const jwtData = jwtDecode(token) || {}
     // console.log(jwtData)
     const expires = jwtData.exp || 0
-    console.log(new Date().getTime()/1000, ' === ', expires)
     return (new Date().getTime()/1000) < expires
 }

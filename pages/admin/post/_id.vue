@@ -78,6 +78,9 @@
                 }
             }
         },
+        mounted() {
+            this.controls.text = this.post.text
+        },
         methods: {
             onSubmit() {
                 this.$refs.form.validate(async valid => {
@@ -90,7 +93,7 @@
                         }
 
                         try {
-                            await this.$store.dispatch('posts/updatePost', FormData)
+                            await this.$store.dispatch('posts/updatePost', formData)
                             this.$message.success('Пост обновлён')
                             this.loading = false
                         } catch (error) {

@@ -27,18 +27,17 @@ module.exports.getPosts = async (req, res) => {
 }
 
 module.exports.getPostById = async (req, res) => {
-
     try {
         await Post.findById(req.params.id).populate('comments').exec((error, post) => {
-            res.json(post)
+            res.status(201).json(post)
         })
-        res.status(201).json(post)
     } catch (error) {
         res.status(500).json(error) 
     }
 }
 
 module.exports.updatePost = async (req, res) => {
+    // console.log('UpdatePost', req.params.id)
     const $set = {
         text: req.body.text
     }
@@ -48,7 +47,7 @@ module.exports.updatePost = async (req, res) => {
         },
         {$set},
         {new: true})
-        res.json(post)
+        res.status(200).json(post)
     } catch (error) {
         res.status(500).json(error)
     }

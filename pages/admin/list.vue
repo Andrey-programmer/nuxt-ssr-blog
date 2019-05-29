@@ -63,7 +63,7 @@
         layout: 'admin',
         middleware: ['admin-guard'],
         async asyncData({store}) {
-            const posts = await store.dispatch('posts/getAminPosts')
+            const posts = await store.dispatch('posts/getAdminPosts')
             return {posts}
         },
         methods: {

@@ -16,28 +16,42 @@ const posts = [
 ]
 
 export const actions = {
-    async getAminPosts({commit}) {
-        return await new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(posts)
-            }, 200);
-        })
+    async getAdminPosts({commit}) {
+        try {
+            return await this.$axios.$get('/api/post/admin')
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
+        // return await new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve(posts)
+        //     }, 200);
+        // })
     },
     async removePost({commit}, id) {
         try {
-            
+            return await this.$axios.$delete(`/api/post/admin/${id}`)
         } catch (error) {
-            
+            commit('setError', error, {root: true})
+            throw error
         }
     },
     async getPostById({commit}, postId) {
-        return await new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(posts.find(p => p._id === postId))
-            }, 200);
-        })
+        try {
+            return await this.$axios.$get(`/api/post/admin/${postId}`)
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
     },
     async updatePost({commit}, {id, text}) {
+        try {
+            return await this.$axios.$put(`/api/post/admin/${id}`, {text})
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
     },
     async createPost({commit}, {title, text, image}) {
 
