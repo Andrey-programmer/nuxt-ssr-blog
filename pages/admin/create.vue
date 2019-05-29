@@ -8,7 +8,7 @@
         <h1 class="mb">Создать новый пост</h1>
         <el-form-item label="Введите название поста" prop="title">
             <el-input 
-                v-model.trim="controls.title" 
+                v-model="controls.title" 
             />
         </el-form-item>
         <el-form-item label="Текст в формате .md или .html" prop="text">
@@ -118,6 +118,8 @@
 
                         try {
                             await this.$store.dispatch('posts/createPost', formData)
+
+                            // Обнуляю данные
                             this.controls.text = ''
                             this.controls.title = ''
                             this.$refs.upload.clearFiles()

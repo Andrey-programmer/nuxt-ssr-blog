@@ -17,6 +17,7 @@ mongoose.connect(keys.baseUrl)
     }).catch(error => console.error(error))
 
 app.use(passport.initialize())
+app.use(passport.session())
 passport.use(passportStrategy)
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
