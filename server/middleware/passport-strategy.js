@@ -1,6 +1,6 @@
 // const {model} = require('mongoose')
-const keys = require('../keys')
 const {Strategy, ExtractJwt} = require('passport-jwt')
+const keys = require('../keys')
 const User = require('../models/user.model')
 
 //Autherization: Bearer ... .... .. . . .
@@ -15,7 +15,7 @@ module.exports = new Strategy(options, async (payload, done) => {
         if(candidate) {
             done(null, candidate)
         } else {
-            done(false)
+            done(null, false)
         }
     } catch (error) {
         console.log(error)

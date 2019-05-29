@@ -105,7 +105,7 @@
         },
         methods: {
             onSubmit() {
-                console.log('onSubmit')
+                // console.log('onSubmit')
                 this.$refs.form.validate(async valid => {
                     if (valid && this.image) {
                         this.loading = true

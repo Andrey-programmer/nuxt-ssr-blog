@@ -83,6 +83,6 @@ function isJWTValid(token) {
     const jwtData = jwtDecode(token) || {}
     // console.log(jwtData)
     const expires = jwtData.exp || 0
-
+    console.log(new Date().getTime()/1000, ' === ', expires)
     return (new Date().getTime()/1000) < expires
 }
