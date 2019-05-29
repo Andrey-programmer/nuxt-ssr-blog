@@ -9,6 +9,9 @@ export const state = () => ({
 export const getters = {
     isAuth(state) {
         return !!state.token
+    },
+    getToken(state) {
+        return state.token
     }
 }
 
@@ -39,17 +42,19 @@ export const actions = {
         }
     },
     setToken({commit}, token) {
+        this.$axios.setToken(token, 'Bearer')
         commit('setToken', token)
         Cookies.set('jwt-token', token)
     },
     logout({commit}) {
+        this.$axios.setToken(false)
         commit('clearToken')
         Cookies.remove('jwt-token')
     },
     async createUser({commit}, formData) {
         try {
             await this.$axios.$post('/api/auth/admin/create', formData)
-            console.log('CreateUser', formData)
+            // console.log('CreateUser', formData)
         } catch (error) {
             commit('setError', error, {root: true})
             throw error

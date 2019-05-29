@@ -14,25 +14,25 @@ router.post(
 
 router.get(
     '/admin/',
-    // passport.authenticate('jwt', {session: false}),
+    passport.authenticate('jwt', {session: false}),
     controller.getPosts
 )
 
 router.get(
     '/admin/:id',
-    // passport.authenticate('jwt', {session: false}),
+    passport.authenticate('jwt', {session: false}),
     controller.getPostById
 )
 
 router.put(
     '/admin/:id',
-    // passport.authenticate('jwt', {session: false}),
+    passport.authenticate('jwt', {session: false}),
     controller.updatePost
 )
 
 router.delete(
     '/admin/:id',
-    // passport.authenticate('jwt', {session: false}),
+    passport.authenticate('jwt', {session: false}),
     controller.removePost
 )
 
