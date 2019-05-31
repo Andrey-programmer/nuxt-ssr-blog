@@ -91,5 +91,13 @@ export const actions = {
             commit('setError', error, {root: true})
             throw error
         }
+    },
+    async addView({commit}, {_id, views}) {
+        try {
+            return await this.$axios.$put(`/api/post/add/view/${_id}`, {views})
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
     }
 }

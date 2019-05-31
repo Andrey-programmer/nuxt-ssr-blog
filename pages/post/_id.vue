@@ -65,7 +65,10 @@ export default {
     },
     async asyncData({store, params}) {
         const post = await store.dispatch('posts/getPostById', params.id)
-        return {post}
+        await store.dispatch('posts/addView', post)
+        return {
+            post: {...post, views: ++post.views} 
+        }
     },
     components: {
         AppComment,

@@ -67,7 +67,7 @@ module.exports.addView = async (req, res) => {
         views: ++req.body.views
     }
     try {
-        await Post.findOneAndUpdate({_id: req.params.id})
+        await Post.findOneAndUpdate({_id: req.params.id}, {$set})
         res.status(204).json() // Означает что ошибки нет но ответ не посылаем)
     } catch (error) {
         res.status(500).json(error) 
