@@ -59,7 +59,7 @@
             return !!params.id
         },
         async asyncData({store, params}) {
-            const post = await store.dispatch('posts/getPostById', params.id)
+            const post = await store.dispatch('posts/getAdminPostById', params.id)
             return {post}
         },
         data() {

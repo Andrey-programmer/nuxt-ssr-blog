@@ -29,6 +29,14 @@ export const actions = {
         //     }, 200);
         // })
     },
+    async getPosts({commit}) {
+        try {
+            return await this.$axios.$get('/api/post')
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
+    },
     async removePost({commit}, id) {
         try {
             return await this.$axios.$delete(`/api/post/admin/${id}`)
@@ -37,9 +45,17 @@ export const actions = {
             throw error
         }
     },
-    async getPostById({commit}, postId) {
+    async getAdminPostById({commit}, postId) {
         try {
             return await this.$axios.$get(`/api/post/admin/${postId}`)
+        } catch (error) {
+            commit('setError', error, {root: true})
+            throw error
+        }
+    },
+    async getPostById({commit}, postId) {
+        try {
+            return await this.$axios.$get(`/api/post/${postId}`)
         } catch (error) {
             commit('setError', error, {root: true})
             throw error
@@ -75,7 +91,5 @@ export const actions = {
             commit('setError', error, {root: true})
             throw error
         }
-        
     }
-
 }

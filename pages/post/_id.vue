@@ -2,7 +2,7 @@
 <article class="post">
     <header class="post-header">
         <div class="post-title">
-            <h1>Post title</h1>
+            <h1>{{post.title}}</h1>
             <nuxt-link :to="'/'">
                 <i class="el-icon-back"></i>
             </nuxt-link>
@@ -10,25 +10,23 @@
         <div class="post-info">
             <small>
                 <i class="el-icon-time"></i>
-                {{new Date().toLocaleString()}}
+                {{new Date(post.date).toLocaleString()}}
             </small>
             <small>
                 <i class="el-icon-view"></i>
-                42
+                {{post.views}}
             </small>
         </div>
         <div class="post-image">
             <img
-                src="@/static/images/tropic.jpg"
+                :src="post.imageUrl"
                 alt="post-image"
                 class="post-img"
             >
         </div>
     </header>
     <main class="post-content">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ut sequi nostrum doloremque optio modi quis ad dolorem facere quaerat?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ut sequi nostrum doloremque optio modi quis ad dolorem facere quaerat?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ut sequi nostrum doloremque optio modi quis ad dolorem facere quaerat?</p>
+        <vue-markdown>{{post.text}}</vue-markdown>
     </main>
     <footer>
         <app-comment-form 
@@ -36,10 +34,10 @@
             @created="createCommentHandler"
         />
         <div class="comments"
-            v-if="true"
+            v-if="post.comments.length"
         >
             <app-comment
-                v-for="comment of 4"
+                v-for="comment in post.comments"
                 :key="comment"
                 :comment="comment"
             ></app-comment>
@@ -64,6 +62,10 @@ export default {
             canAddComment: true,
             comment: '' 
         }
+    },
+    async asyncData({store, params}) {
+        const post = await store.dispatch('posts/getPostById', params.id)
+        return {post}
     },
     components: {
         AppComment,

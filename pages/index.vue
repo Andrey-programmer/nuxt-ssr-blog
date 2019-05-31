@@ -5,8 +5,9 @@
   >
     <el-col :xs="24" :sm="18" :md="12" :lg="10">
       <app-post 
-        v-for="post in 3"
-        :key="post"
+        v-for="post in posts"
+        :key="post._id"
+        :post="post"
       />
     </el-col>
   </el-row>
@@ -18,6 +19,14 @@ import AppPost from '~/components/main/Post.vue'
 export default {
   head:{
     title: 'Главная'
+  },
+  async asyncData({store}) {
+    try {
+      const posts = await store.dispatch('posts/getPosts')
+      return {posts}
+    } catch (error) {
+      throw error
+    }
   },
   components: {
     AppPost

@@ -8,15 +8,15 @@
             slot="header" 
             class="post-header"
         >
-            <h3>Post title</h3>
+            <h3>{{post.title}}</h3>
             <small>
                 <i class="el-icon-time"></i>
-                {{new Date().toLocaleString()}}
+                {{new Date(post.date).toLocaleString()}}
             </small>
         </header>
         <div class="post-body">
                 <img 
-                    src="images/tropic.jpg" 
+                    :src="post.imageUrl" 
                     alt="post-image" 
                     class="post-img"
                 >
@@ -30,7 +30,7 @@
             </el-button>
             <span>
                 <i class="el-icon-s-comment"></i>
-                12
+                {{post.comments.length}}
             </span>
         </footer>
      </el-card>
@@ -38,9 +38,15 @@
 
  <script>
  export default {
+     props: {
+        post: {
+            type: Object,
+            required: true
+         }
+     },
      methods: {
         openPost() {
-            const id = 'test-id'
+            const id = this.post._id
             this.$router.push(`/post/${id}`)
         }
      }
