@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes) //регистрируем роуты в express
 app.use('/api/post', postRoutes) //регистрируем роуты в express
-app.use('/api/post', commentRoutes) //регистрируем роуты в express
+app.use('/api/comment', commentRoutes) //регистрируем роуты в express
 
 module.exports = app
 

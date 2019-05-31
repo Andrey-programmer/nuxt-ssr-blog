@@ -32,13 +32,14 @@
         <app-comment-form 
             v-if="canAddComment"
             @created="createCommentHandler"
+            :postId="post._id"
         />
         <div class="comments"
             v-if="post.comments.length"
         >
             <app-comment
                 v-for="comment in post.comments"
-                :key="comment"
+                :key="comment._id"
                 :comment="comment"
             ></app-comment>
         </div>
@@ -78,7 +79,8 @@ export default {
         return !!params.id
     },
     methods: {
-        createCommentHandler() {
+        createCommentHandler(comment) {
+            this.post.comments.unshift(comment) // Добавляем вновь появившийся комментарий в начало списка
             this.canAddComment = false
         }
     }
