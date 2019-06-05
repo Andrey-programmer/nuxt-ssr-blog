@@ -85,7 +85,7 @@ module.exports.getAnalytics = async  (req, res) => {
             },
             views: {
                 labels,
-                data: posts.map(post => post.views.length)
+                data: posts.map(post => post.views)
             }
         }
         res.json(json)
