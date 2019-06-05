@@ -66,6 +66,9 @@
 
 <script>
     export default {
+        head: {
+            title: `Создать пост | ${process.env.appName}`
+        },
         layout: 'admin',
         middleware: ['admin-guard'],
         header() {

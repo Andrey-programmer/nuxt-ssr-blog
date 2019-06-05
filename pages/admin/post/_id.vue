@@ -36,7 +36,7 @@
         <div class="mb">
             <small>
                 <i class="el-icon-time"></i>
-            <span style="margin-left: 10px">{{ post.date.toLocaleString() }}</span>
+            <span style="margin-left: 10px">{{ post.date | date }}</span>
             </small>
             <small style="margin-left: 2rem">
                 <i class="el-icon-view"></i>
@@ -52,7 +52,7 @@
         middleware: ['admin-guard'],
         head() {
             return {
-                title: `Пост | ${this.post.title}`
+                title: `${this.post.title} | ${process.env.appName}`
             }
         },
         validate({params}) {

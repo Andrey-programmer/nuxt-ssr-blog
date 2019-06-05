@@ -67,7 +67,7 @@ export default {
         onSubmit(formName) {
             this.$refs.form.validate( async (valid) => {
                 if(valid) {
-                     console.log('Submit')
+                    //  console.log('Submit')
                     this.loading = true
 
                     const formData = {
@@ -81,12 +81,12 @@ export default {
                         this.$message.success('Комментарий добавлен')
                         this.$emit('created', newComment)
                     } catch (error) {
-                        console.log(error)
+                        // console.log(error)
                         this.loading = false
                     }
                     
                 } else {
-                    console.log('Error submit')
+                    // console.log('Error submit')
                     return false
                 }
             })

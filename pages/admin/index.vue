@@ -18,6 +18,9 @@
     import appAnalyticsChart from '@/components/admin/AnalyticsChart'
 
     export default {
+        head: {
+            title: `Аналитика | ${process.env.appName}`
+        },
         layout: 'admin',
         middleware: ['admin-guard'],
         components: {

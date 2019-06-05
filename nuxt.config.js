@@ -40,6 +40,9 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+  env: {
+    appName: 'SSR Blog'
+  },
 
   build: {
     transpile: [/^element-ui/],

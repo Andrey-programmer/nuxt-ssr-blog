@@ -36,6 +36,9 @@
 
 <script>
     export default {
+        head: {
+            title: `Добавить пользователя | ${process.env.appName}`
+        },
         layout: 'admin',
         middleware: ['admin-guard'],
         data() {
