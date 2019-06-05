@@ -16,6 +16,7 @@
             return {analytics}
         },
         mounted() {
+            console.log(this.analytics)
             const data = {
                 labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                 datasets: [{

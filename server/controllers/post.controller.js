@@ -77,8 +77,6 @@ module.exports.addView = async (req, res) => {
 module.exports.getAnalytics = async  (req, res) => {
     try {
         const posts = await Post.find()
-        console.log('posts', posts)
-
         const labels = posts.map(post => post.title)
         const json = {
             comments: {
