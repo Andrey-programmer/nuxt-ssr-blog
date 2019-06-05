@@ -11,6 +11,10 @@
         layout: 'admin',
         middleware: ['admin-guard'],
         extends: Bar,
+        async asyncData({store}) {
+            const analytics = await store.dispatch('posts/getAnalytics')
+            return {analytics}
+        },
         mounted() {
             const data = {
                 labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
