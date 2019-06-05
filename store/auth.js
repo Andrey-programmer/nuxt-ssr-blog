@@ -81,7 +81,7 @@ export const actions = {
 }
 
 function isJWTValid(token) {
-    console.log('Token = ', token)
+    // console.log('Token = ', token)
     if(!token) {
         return false
     }

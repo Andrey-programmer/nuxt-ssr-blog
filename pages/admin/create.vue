@@ -100,7 +100,6 @@
         }, 
         watch: {
             controls(value) {
-                console.log(value)
             }
         },
         methods: {

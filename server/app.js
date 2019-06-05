@@ -11,7 +11,7 @@ const keys = require('./keys')
 // или const keys = require('./keys/index')  
 const app = express()
 
-mongoose.connect(keys.baseUrl)
+mongoose.connect(keys.baseUrl, {useNewUrlParser: true})
     .then(() => {
         console.log('MongoDB connected...')
     }).catch(error => console.error(error))
