@@ -34,6 +34,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/pwa'
   ],
 
   axios: {
@@ -48,5 +49,13 @@ module.exports = {
     transpile: [/^element-ui/],
     extend(config, ctx) {
     }
+  },
+
+  workbox: {
+    // Workbox options
+  },
+
+  meta: {
+    // ...
   }
 }
